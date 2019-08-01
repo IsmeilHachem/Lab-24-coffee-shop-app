@@ -1,11 +1,21 @@
 package co.grandcircus.coffeeshopapp.entity;
 
-public class Product {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private Long id;
-	private String name;
-	private String description;
-	private Double price;
+@Entity
+@Table(name="Products")
+public class Product {
+	
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long id;
+	String name;
+	String description;
+	Double price;
 
 	public Product() {
 	}

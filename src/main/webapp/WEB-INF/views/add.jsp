@@ -8,14 +8,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" />
 </head>
 <body>
-	<form action="/register-result" method="post"> 
-		<p>firstName: <input type="text" name= "firstname" required/> </p>
-		<p>lastName: <input type="text" name="lastname" required/></p>
-		<p>userName: <input type="text" name= "username" required/> </p>
-		<p>Password: <input type="password" name= "password" required/> </p>
+	<form method="post"> 
+		<p>name: <input type="text" name="name" required/> </p>
+		<p>description: <input type="text" name="description" required/></p>
+		<p>price: <input type="number" name= "price" required/> </p>
 		<p><input type="submit"/></p>
 	</form>
+	<a href="/">Country road Take me home To a Place I belong West Virginia.</a>
 	
-	<a href="/">Home</a>
 </body>
 </html>

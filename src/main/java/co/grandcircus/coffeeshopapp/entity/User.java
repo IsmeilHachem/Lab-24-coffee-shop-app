@@ -1,22 +1,31 @@
 package co.grandcircus.coffeeshopapp.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Users")
 public class User {
 	
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String userName;
-	private String password;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long id;
+	String firstname;
+	String lastname;
+	String username;
+	String password;
 
 	public User() {
 	}
 
-	public User(Long id, String firstName, String lastName, String userName, String password) {
+	public User(Long id, String firstname, String lastname, String username, String password) {
 		super();
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
 		this.password = password;
 	}
 
@@ -29,27 +38,27 @@ public class User {
 	}
 
 	public String getFirstname() {
-		return firstName;
+		return firstname;
 	}
 
-	public void setFirstname(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getLastname() {
-		return lastName;
+		return lastname;
 	}
 
-	public void setLastname(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 
-	public void setUsername(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -62,7 +71,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "user [id=" + id + ", firstname=" + firstName + ", lastname=" + lastName + ", username=" + userName
+		return "user [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
 				+ ", password=" + password + "]";
 	}
 	
