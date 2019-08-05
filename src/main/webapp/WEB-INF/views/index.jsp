@@ -21,6 +21,9 @@
 	<div>
 	<a href="/admin">Admin Page</a>
 	</div>
+	<div>
+	<a href="/login">Log In!</a>
+	</div>
 	<table class="table">
 
 			<thead>
@@ -38,6 +41,16 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		
+		<nav>
+			<c:if test="${ empty username }">
+				<a href="/login">Log in</a>
+			</c:if>
+			<c:if test="${ not empty username }">
+				Welcome ${ user.username }
+				<a href="/logout">Log out</a>
+			</c:if>
+		</nav>
 		
 		<p><a href="/register">Let's add those Bowels!</a></p>
 

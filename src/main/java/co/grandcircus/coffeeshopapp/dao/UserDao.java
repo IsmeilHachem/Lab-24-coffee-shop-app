@@ -39,6 +39,11 @@ public class UserDao {
 		User user = em.getReference(User.class, id);
 		em.remove(user);
 	}
+
+	public User findByUsernameAndPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

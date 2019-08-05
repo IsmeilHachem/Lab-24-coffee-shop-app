@@ -13,14 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.coffeeshopapp.dao.ProductsDao;
 import co.grandcircus.coffeeshopapp.dao.UserDao;
+import co.grandcircus.coffeeshopapp.dao.UserRepository;
 import co.grandcircus.coffeeshopapp.entity.Product;
 import co.grandcircus.coffeeshopapp.entity.User;
+
 
 @Controller
 public class CoffeeShopController {
 	
 	@Autowired
 	private ProductsDao productdao;
+	
+	@Autowired
+	private UserRepository dao;
 
 //	@RequestMapping("/")
 //	public ModelAndView home() {
@@ -96,4 +101,43 @@ public class CoffeeShopController {
         productdao.delete(id);
         return new ModelAndView("redirect:/admin");
     }
+	
+	@RequestMapping("/login")
+	public ModelAndView showLogin() {
+		return new ModelAndView("login-form");
+	}
+	
+	@PostMapping("/login")
+	public ModelAndView submitLogin(
+		@RequestParam("username") String username,
+		@RequestParam("password") String password,
+		HttpSession session
+			) {
+		
+		System.out.println("In the controller.");
+		
+		// check the database for the user that matches both email and password
+		User user = dao.findByUsernameAndPassword(username, password);
+		System.out.println(user);
+		
+		// if not found, show the form again with error message
+		if (user == null) {
+			return new ModelAndView("login-form", "message", "Incorrect username or password.");
+		}
+		
+		// "login" just means adding the user to the session
+		session.setAttribute("preference", user);
+		
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		// This clears the session and starts a brand new clean one.
+		session.invalidate();
+		
+		return new ModelAndView("redirect:/");
+	}
+	
+	
 }
